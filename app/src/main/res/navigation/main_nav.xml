@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeEpoxyFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.milo.store.presentation.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.milo.store.presentation.detail.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="user"
+            app:argType="com.milo.store.data.model.User"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeEpoxyFragment"
+        android:name="com.milo.store.presentation.home_epoxy.HomeEpoxyFragment"
+        android:label="HomeEpoxyFragment" >
+        <action
+            android:id="@+id/action_homeEpoxyFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+</navigation>
