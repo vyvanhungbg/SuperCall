@@ -1,0 +1,103 @@
+<resources>
+    <!--    Define style for app below-->
+
+    <style name="Maven_bold_700_10sdp">
+        <item name="android:fontFamily">@font/maven_bold</item>
+        <item name="android:textSize">@dimen/_10sdp</item>
+    </style>
+
+    <style name="Maven_bold_700_12sdp">
+        <item name="android:fontFamily">@font/maven_bold</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+    </style>
+
+    <style name="Maven_bold_700_14sdp">
+        <item name="android:fontFamily">@font/maven_bold</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
+    <style name="Maven_bold_700_16sdp">
+        <item name="android:fontFamily">@font/maven_bold</item>
+        <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+
+    <style name="Maven_bold_700_18sdp">
+        <item name="android:fontFamily">@font/maven_bold</item>
+        <item name="android:textSize">@dimen/_18sdp</item>
+    </style>
+
+    <style name="Maven_bold_700_20sdp">
+        <item name="android:fontFamily">@font/maven_bold</item>
+        <item name="android:textSize">@dimen/_20sdp</item>
+    </style>
+    <style name="Maven_bold_700_24sdp">
+        <item name="android:fontFamily">@font/maven_bold</item>
+        <item name="android:textSize">@dimen/_24sdp</item>
+    </style>
+    <style name="Maven_bold_700_30sdp">
+        <item name="android:fontFamily">@font/maven_bold</item>
+        <item name="android:textSize">@dimen/_30sdp</item>
+    </style>
+
+    <style name="Maven_semi_bold_600_10sdp">
+        <item name="android:fontFamily">@font/maven_semi_bold</item>
+        <item name="android:textSize">@dimen/_10sdp</item>
+    </style>
+
+    <style name="Maven_semi_bold_600_14sdp">
+        <item name="android:fontFamily">@font/maven_semi_bold</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
+    <style name="Maven_semi_bold_600_16sdp">
+        <item name="android:fontFamily">@font/maven_semi_bold</item>
+        <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+
+    <style name="Maven_medium_500_10sdp">
+        <item name="android:fontFamily">@font/maven_medium</item>
+        <item name="android:textSize">@dimen/_10sdp</item>
+    </style>
+
+    <style name="Maven_medium_500_12sdp">
+        <item name="android:fontFamily">@font/maven_medium</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+    </style>
+
+    <style name="Maven_medium_500_14sdp">
+        <item name="android:fontFamily">@font/maven_medium</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
+    <style name="Maven_medium_500_16sdp">
+        <item name="android:fontFamily">@font/maven_medium</item>
+        <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+    <style name="Maven_regular_400_12sdp">
+        <item name="android:fontFamily">@font/maven_regular</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+    </style>
+    <style name="Maven_regular_400_14sdp">
+        <item name="android:fontFamily">@font/maven_regular</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
+    <style name="Maven_regular_400_16sdp">
+        <item name="android:fontFamily">@font/maven_regular</item>
+        <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+
+    <style name="Maven_regular_400_24sdp">
+        <item name="android:fontFamily">@font/maven_regular</item>
+        <item name="android:textSize">@dimen/_24sdp</item>
+    </style>
+
+
+    <style name="tab_text" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:fontFamily">@font/maven_semi_bold</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
+
+
+</resources>

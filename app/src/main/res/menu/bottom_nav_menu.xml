@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/favoriteContactFragment"
+        android:icon="@drawable/ic_favorite"
+        android:title="@string/favorite" />
+
+     <item
+         android:id="@+id/historyCallFragment"
+         android:icon="@drawable/ic_history"
+         android:title="@string/recent" />
+
+    <item
+        android:id="@+id/contactFragment"
+        android:icon="@drawable/ic_contact"
+        android:title="@string/contact" />
+
+    <item
+        android:id="@+id/numPadFragment"
+        android:icon="@drawable/ic_numpad"
+        android:title="@string/numpad" />
+
+    <item
+        android:id="@+id/settingFragment"
+        android:icon="@drawable/ic_setting"
+        android:title="@string/setting" />
+</menu>

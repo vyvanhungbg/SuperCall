@@ -17,8 +17,8 @@ class DetailViewModel(
     private val _user = MutableLiveData<User?>()
     val user: LiveData<User?> get() = _user
 
-    fun setData(safeArgs: DetailFragmentArgs){
-        _user.value = safeArgs.user
-    }
+//    fun setData(safeArgs: DetailFragmentArgs){
+//        _user.value = safeArgs.user
+//    }
 }
 

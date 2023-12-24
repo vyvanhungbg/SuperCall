@@ -24,10 +24,10 @@ class DetailFragment :
     override val navigation: DetailNavigation
         get() = DetailNavigation(this)
 
-    private val safeArgs by navArgs<DetailFragmentArgs>()
+//    private val safeArgs by navArgs<DetailFragmentArgs>()
 
     override fun initData() {
-        viewModel.setData(safeArgs)
+//        viewModel.setData(safeArgs)
     }
 
     override fun observeData() {

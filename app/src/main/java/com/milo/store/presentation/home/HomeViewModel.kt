@@ -30,7 +30,7 @@ class HomeViewModel(
     private val mmkv: MMKV,
 ) : BaseViewModel() {
 
-    private val defaultSearch = "vyvanhungbg"
+    private val defaultSearch = "xxxx"
 
     val textSearch = MutableLiveData<String>(getLastKeySearch() ?: defaultSearch)
 

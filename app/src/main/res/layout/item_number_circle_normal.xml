@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="description"
+            type="String" />
+
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_14sdp"
+        android:layout_marginVertical="@dimen/_8sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clickable="true"
+            android:onClick="@{onClick}"
+            touchHaptic="@{true}"
+            android:hapticFeedbackEnabled="true"
+            android:background="@drawable/bg_circle_state"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                style="@style/Maven_bold_700_24sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_6sdp"
+                android:autoSizeMaxTextSize="@dimen/_30sdp"
+                android:autoSizeMinTextSize="@dimen/_24sdp"
+                android:autoSizeStepGranularity="@dimen/_1sdp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center"
+                android:text="@{title}"
+                tools:targetApi="o"
+                tools:text="#" />
+
+            <TextView
+                style="@style/Maven_medium_500_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_6sdp"
+                android:autoSizeMaxTextSize="@dimen/_12sdp"
+                visible="@{description.empty == false}"
+                android:autoSizeMinTextSize="@dimen/_8sdp"
+                android:autoSizeStepGranularity="@dimen/_1sdp"
+                android:backgroundTint="#EEEFF3"
+                android:gravity="center"
+                android:text="@{description}"
+                tools:targetApi="o"
+                tools:text="ABC" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

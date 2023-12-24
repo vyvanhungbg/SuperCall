@@ -44,6 +44,7 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':base')
+    implementation project(path: ':library')
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -80,6 +81,7 @@ dependencies {
     debugImplementation("io.objectbox:objectbox-android-objectbrowser:$objectboxVersion")
     releaseImplementation("io.objectbox:objectbox-android:$objectboxVersion")
 
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
 
     //epoxy
     implementation "com.airbnb.android:epoxy:4.6.4"

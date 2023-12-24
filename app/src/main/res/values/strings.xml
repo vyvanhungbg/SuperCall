@@ -8,4 +8,9 @@
     <string name="no_user_defined">No user defined !</string>
     <string name="can_not_open_browser">Can not open browser !</string>
     <string name="open_browser">Open browser</string>
+    <string name="favorite">Favorite</string>
+    <string name="recent">Recent</string>
+    <string name="contact">Contact</string>
+    <string name="numpad">Numpad</string>
+    <string name="setting">Setting</string>
 </resources>

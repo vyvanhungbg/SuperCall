@@ -1,9 +1,13 @@
 package com.android.milo_store.base.extension
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.view.HapticFeedbackConstants
+import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnTouchListener
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
@@ -18,6 +22,26 @@ fun View.visible(isVisible: Boolean) {
     visibility = if (isVisible) View.VISIBLE else View.GONE
 }
 
+
+@SuppressLint("ClickableViewAccessibility")
+@BindingAdapter("touchHaptic")
+fun View.touchHaptic(enabled: Boolean) {
+    if(enabled){
+        this.setOnTouchListener { _, event ->
+            if(event.action == MotionEvent.ACTION_DOWN){
+                this.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
+            }
+            false
+        }
+    }
+}
+
+
+@SuppressLint("ClickableViewAccessibility")
+@BindingAdapter("setTouchListener")
+fun View.setTouchListener(onTouch: OnTouchListener) {
+    this.setOnTouchListener(onTouch)
+}
 
 @BindingAdapter("invisible")
 fun View.invisible(isInvisible: Boolean) {

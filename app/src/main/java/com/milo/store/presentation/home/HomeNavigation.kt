@@ -17,7 +17,7 @@ class HomeNavigation(val fragment: HomeFragment) : BaseNavigation() {
     }
 
     fun navigateToDetail(user: User) {
-        val direction = HomeFragmentDirections.actionHomeFragmentToDetailFragment(user)
-        navigateTo(R.id.homeFragment, direction)
+       // val direction = HomeFragmentDirections.actionHomeFragmentToDetailFragment(user)
+       // navigateTo(R.id.homeFragment, direction)
     }
 }

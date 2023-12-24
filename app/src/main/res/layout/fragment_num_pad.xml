@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.milo.store.presentation.numpad.NumPadViewModel" />
+
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/_F5F5F5"
+        tools:context="com.milo.store.presentation.numpad.NumPadFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/text_view_number_phone"
+                style="@style/Maven_bold_700_24sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:ellipsize="marquee"
+                android:freezesText="true"
+                android:gravity="center"
+                android:text="@{viewModel.numberPhone}"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textColor="@color/_101010"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="04992838549" />
+
+            <TextView
+                android:id="@+id/text_view_add_number"
+                style="@style/Maven_medium_500_14sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:ellipsize="marquee"
+                android:freezesText="true"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/_4sdp"
+                android:paddingVertical="@dimen/_2sdp"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textColor="@color/_635ba6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_number_phone"
+                tools:text="Add contact" />
+
+            <com.airbnb.epoxy.EpoxyRecyclerView
+                android:id="@+id/epoxy_numpad"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_add_number"
+                app:spanCount="3"
+                tools:itemCount="15"
+                tools:listitem="@layout/item_number_circle_normal" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>

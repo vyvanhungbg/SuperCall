@@ -18,7 +18,7 @@ class HomeEpoxyNavigation(val fragment: HomeEpoxyFragment) : BaseNavigation() {
     }
 
     fun navigateToDetail(user: User) {
-        val direction = HomeEpoxyFragmentDirections.actionHomeEpoxyFragmentToDetailFragment(user)
-        navigateTo(R.id.homeEpoxyFragment, direction)
+       // val direction = HomeEpoxyFragmentDirections.actionHomeEpoxyFragmentToDetailFragment(user)
+       // navigateTo(R.id.homeEpoxyFragment, direction)
     }
 }
