@@ -2,6 +2,7 @@ package com.milo.store.utils.extension
 
 import android.app.AlertDialog
 import android.app.TimePickerDialog
+import android.app.role.RoleManager
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Color
@@ -10,11 +11,14 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Environment
 import android.os.StatFs
+import android.telecom.TelecomManager
 import android.util.DisplayMetrics
 import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import com.milo.store.BuildConfig
+import com.milo.store.call.extension.isQPlus
 import java.util.Calendar
 import java.util.Locale
 import java.util.TimeZone
@@ -33,6 +37,17 @@ fun Context.color(@ColorRes color: Int): Int {
 
 fun Context.drawable(@DrawableRes drawable: Int): Drawable? {
     return ContextCompat.getDrawable(this, drawable)
+}
+
+fun Context.checkIsAppCallDefault(): Boolean {
+    return if (isQPlus()) {
+        val roleManager = this.getSystemService(RoleManager::class.java)
+        (roleManager?.isRoleAvailable(RoleManager.ROLE_DIALER) ?: false) && roleManager.isRoleHeld(
+            RoleManager.ROLE_DIALER
+        )
+    } else {
+        this.getSystemService(TelecomManager::class.java)?.defaultDialerPackage == packageName
+    }
 }
 
 fun Context.pickDateTime(action: (hour: Int, minute: Int) -> Unit) {

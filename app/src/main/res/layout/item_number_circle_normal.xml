@@ -21,16 +21,17 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="@{onClick}"
+        touchHaptic="@{true}"
+        android:hapticFeedbackEnabled="true"
         android:layout_marginHorizontal="@dimen/_14sdp"
         android:layout_marginVertical="@dimen/_8sdp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:clickable="true"
-            android:onClick="@{onClick}"
-            touchHaptic="@{true}"
-            android:hapticFeedbackEnabled="true"
+
             android:background="@drawable/bg_circle_state"
             android:gravity="center"
             android:orientation="vertical"
