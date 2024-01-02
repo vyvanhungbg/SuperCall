@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="avatar"
+            type="String" />
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="phoneNumber"
+            type="String" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/_5sdp"
+        android:paddingVertical="@dimen/_4sdp"
+        android:background="@drawable/bg_border_12">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/image_avatar"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_oval="true"
+            loadImageWithDefault="@{avatar}"
+            tools:src="@drawable/bg_call_circle_state" />
+
+        <TextView
+            android:id="@+id/image_view_first_name"
+            style="@style/Maven_bold_700_20sdp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:maxLength="1"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:text="@{name.empty ? `` : name.toUpperCase().charAt(0)+`` }"
+            app:layout_constraintEnd_toEndOf="@id/image_avatar"
+            app:layout_constraintStart_toStartOf="@id/image_avatar"
+            app:layout_constraintTop_toTopOf="@id/image_avatar"
+            app:layout_constraintBottom_toBottomOf="@id/image_avatar"
+            tools:text="S" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image_avatar"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/text_view_name"
+                style="@style/Maven_semi_bold_600_16sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:gravity="start|center_vertical"
+                android:maxLines="1"
+                android:text="@{name}"
+                tools:text="Name" />
+
+            <TextView
+                android:id="@+id/text_view_number_phone"
+                style="@style/Maven_semi_bold_600_16sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:text="@{phoneNumber}"
+                tools:text="+039284" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,6 +1,7 @@
 package com.milo.store.presentation.contact
 
 import com.android.milo_store.base.BaseFragment
+import com.milo.store.ItemContactBindingModel_
 import com.milo.store.R
 import com.milo.store.databinding.FragmentContactBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -18,15 +19,17 @@ class ContactFragment :
         get() = ContactNavigation(this)
 
     override fun initData() {
-
+        context?.let { viewModel.getAllContact(it) }
     }
 
     override fun observeData() {
-
+        viewModel.listContact.observe(viewLifecycleOwner){
+            binding.epoxyContact.requestModelBuild()
+        }
     }
 
     override fun setView() {
-
+        initEpoxy()
     }
 
     override fun setOnClick() {
@@ -34,4 +37,15 @@ class ContactFragment :
     }
 
 
+    private fun initEpoxy() {
+        binding.epoxyContact.setHasFixedSize(true)
+        binding.epoxyContact.withModels {
+            viewModel.listContact.value?.forEach {
+                add(
+                    ItemContactBindingModel_().id(it.contactId).avatar(it.photoUri).name(it.firstName)
+                        .phoneNumber(it.getPhoneNumbersDisplay())
+                )
+            }
+        }
+    }
 }

@@ -5,13 +5,20 @@ import android.annotation.SuppressLint
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import com.android.milo_store.base.BaseFragment
+import com.jakewharton.rxbinding4.widget.textChanges
 import com.milo.store.ItemBackspaceNumpadBindingModel_
 import com.milo.store.ItemEmptyNumpadBindingModel_
 import com.milo.store.ItemNumberCircleNormalBindingModel_
 import com.milo.store.ItemStartCallGreenBindingModel_
 import com.milo.store.R
+import com.milo.store.call.model.Contact
 import com.milo.store.databinding.FragmentNumPadBinding
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.concurrent.TimeUnit
 
 
 private const val TAG = "NumPadFragment"
@@ -19,6 +26,7 @@ private const val TAG = "NumPadFragment"
 class NumPadFragment :
     BaseFragment<FragmentNumPadBinding, NumPadNavigation>() {
 
+    private val disposable = CompositeDisposable()
     override fun getLayoutId() = R.layout.fragment_num_pad
 
     override val viewModel by viewModel<NumPadViewModel>()
@@ -26,7 +34,43 @@ class NumPadFragment :
         get() = NumPadNavigation(this)
 
     override fun initData() {
+        context?.let { viewModel.getAllContact(it) }
+        logicSearch()
+    }
 
+    private fun logicSearch() {
+        disposable.add(
+            binding.textViewNumberPhone.textChanges()
+                .debounce(300, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .switchMap { charSequence ->
+                    performSearch(charSequence.toString())
+                        .subscribeOn(Schedulers.io())
+                }
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ result ->
+                    updateUI(result)
+                }) { throwable -> }
+        )
+    }
+
+    private fun performSearch(query: String): Observable<String> {
+
+        return Observable.fromIterable(viewModel.listContact.value ?: emptyList())
+            .filter { contact ->
+                contact.phoneNumbers.any {
+                    it.value == query || it.normalizedNumber == query || (it.value.substringAfter(
+                        "0"
+                    ) == query.substringAfter("+"))
+                }
+            }
+            .map(Contact::firstName)
+            .defaultIfEmpty("Add contact")
+            .subscribeOn(Schedulers.io())
+    }
+
+    private fun updateUI(result: String) {
+        binding.textViewAddNumber.text = result
     }
 
     override fun observeData() {
@@ -94,5 +138,10 @@ class NumPadFragment :
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        disposable.clear()
+        super.onDestroy()
     }
 }

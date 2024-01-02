@@ -46,7 +46,7 @@ class NavigationComponentHelper {
                         if (matchDestination(destination, menuItem.itemId)) {
                             menuItem.isChecked = true
                             readableBottomBar.selectItem(h)
-                            Log.e("ABC", "onDestinationChanged: ${h} ", )
+//                            Log.e("ABC", "onDestinationChanged: ${h} ", )
                         }
                     }
                 }

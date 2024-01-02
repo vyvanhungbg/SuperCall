@@ -161,7 +161,7 @@ class ReadableBottomBar @JvmOverloads constructor( context: Context, val attrs: 
             throw IllegalArgumentException("Index should be in range of 0-${bottomBarItemList.size}")
         }
 
-        Log.e("ABC", "selectItem: ${index} ", )
+//        Log.e("ABC", "selectItem: ${index} ", )
         tabInitialSelectedIndex = index
         val item = bottomBarItemList[index]
         for (i in 0 until childCount) {
