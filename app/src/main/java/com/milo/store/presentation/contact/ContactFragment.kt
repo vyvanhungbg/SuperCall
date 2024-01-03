@@ -19,7 +19,7 @@ class ContactFragment :
         get() = ContactNavigation(this)
 
     override fun initData() {
-        context?.let { viewModel.getAllContact(it) }
+
     }
 
     override fun observeData() {
@@ -29,6 +29,7 @@ class ContactFragment :
     }
 
     override fun setView() {
+        context?.let { viewModel.getAllContact(it) }
         initEpoxy()
     }
 

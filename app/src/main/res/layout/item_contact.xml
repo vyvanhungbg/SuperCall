@@ -18,38 +18,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="@dimen/_5sdp"
-        android:paddingVertical="@dimen/_4sdp"
-        android:background="@drawable/bg_border_12">
+        android:background="?android:attr/selectableItemBackgroundBorderless">
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/image_avatar"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:riv_oval="true"
+            app:riv_corner_radius="@dimen/_12sdp"
             loadImageWithDefault="@{avatar}"
-            tools:src="@drawable/bg_call_circle_state" />
+            tools:src="@drawable/avatar_5" />
 
         <TextView
             android:id="@+id/image_view_first_name"
-            style="@style/Maven_bold_700_20sdp"
+            style="@style/Maven_bold_700_16sdp"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
-            android:maxLength="1"
+            android:maxLength="2"
             android:includeFontPadding="false"
             android:maxLines="1"
-            android:visibility="gone"
             android:textColor="@color/white"
-            android:text="@{name.empty ? `` : name.toUpperCase().charAt(0)+`` }"
+            setNickName="@{name}"
             app:layout_constraintEnd_toEndOf="@id/image_avatar"
             app:layout_constraintStart_toStartOf="@id/image_avatar"
             app:layout_constraintTop_toTopOf="@id/image_avatar"
             app:layout_constraintBottom_toBottomOf="@id/image_avatar"
-            tools:text="S" />
+            tools:text="SM" />
         <LinearLayout
+            android:id="@+id/layout_content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -61,7 +60,7 @@
 
             <TextView
                 android:id="@+id/text_view_name"
-                style="@style/Maven_semi_bold_600_16sdp"
+                style="@style/Maven_semi_bold_600_14sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="marquee"
@@ -72,12 +71,22 @@
 
             <TextView
                 android:id="@+id/text_view_number_phone"
-                style="@style/Maven_semi_bold_600_16sdp"
+                style="@style/Maven_semi_bold_600_10sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start|center_vertical"
                 android:text="@{phoneNumber}"
                 tools:text="+039284" />
         </LinearLayout>
+        <View
+            app:layout_constraintStart_toStartOf="@id/layout_content"
+            app:layout_constraintEnd_toEndOf="@id/layout_content"
+            app:layout_constraintTop_toBottomOf="@id/image_avatar"
+            android:layout_width="0dp"
+            android:alpha="0.5"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_height="0.5dp"
+            android:background="@color/black"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

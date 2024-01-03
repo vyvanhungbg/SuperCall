@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.text.isDigitsOnly
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -63,11 +64,6 @@ fun ImageView.loadImageWithDefault(
             val textViewName =
                 (this@loadImageWithDefault.parent as? View)?.findViewById<TextView>(R.id.image_view_first_name)
 
-            this@loadImageWithDefault.background =
-                ContextCompat.getDrawable(
-                    context,
-                    provideAvatarColor(textViewName?.text.toString())
-                )
             textViewName?.isVisible = true
             return false
         }
@@ -84,6 +80,19 @@ fun ImageView.loadImageWithDefault(
             return false
         }
     }
-    Glide.with(context).load(url).listener(listener).into(this)
+    Glide.with(context).load(url).error(R.drawable.avatar_5).placeholder(R.drawable.avatar_5)
+        .listener(listener).into(this)
 
+}
+
+
+@BindingAdapter("setNickName")
+fun TextView.setNickName(
+    name: String?,
+) {
+    kotlin.runCatching {
+        this.text =
+            if (name.isNullOrEmpty()) "" else name.split(" ").toList().filter { it.isNotEmpty() }
+                .take(2).map { it.uppercase().first() }.joinToString("")
+    }
 }

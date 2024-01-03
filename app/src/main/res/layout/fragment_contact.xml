@@ -3,29 +3,69 @@
 
     <data>
 
-        <variable name="viewModel" type="com.milo.store.presentation.contact.ContactViewModel" />
+        <variable
+            name="viewModel"
+            type="com.milo.store.presentation.contact.ContactViewModel" />
 
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.milo.store.presentation.contact.ContactFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.airbnb.epoxy.EpoxyRecyclerView
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_top"
                 android:layout_width="match_parent"
-                android:overScrollMode="never"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:paddingBottom="@dimen/_32sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:layout_marginHorizontal="@dimen/_12sdp"
+                    android:src="@drawable/avatar_1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_corner_radius="@dimen/_8sdp" />
+
+                <TextView
+                    style="@style/Maven_semi_bold_600_16sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_12sdp"
+                    android:text="Contacts"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.airbnb.epoxy.EpoxyRecyclerView
+                android:id="@+id/epoxy_contact"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_marginHorizontal="@dimen/_12sdp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:clipToPadding="false"
                 android:orientation="vertical"
-                tools:itemCount="5"
-                android:id="@+id/epoxy_contact"/>
+                android:layout_marginTop="@dimen/_24sdp"
+                android:overScrollMode="never"
+                android:paddingBottom="@dimen/_32sdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_top"
+                tools:itemCount="5" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>

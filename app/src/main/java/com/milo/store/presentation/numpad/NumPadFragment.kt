@@ -2,6 +2,7 @@ package com.milo.store.presentation.numpad
 
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import com.android.milo_store.base.BaseFragment
@@ -34,8 +35,7 @@ class NumPadFragment :
         get() = NumPadNavigation(this)
 
     override fun initData() {
-        context?.let { viewModel.getAllContact(it) }
-        logicSearch()
+
     }
 
     private fun logicSearch() {
@@ -58,14 +58,13 @@ class NumPadFragment :
 
         return Observable.fromIterable(viewModel.listContact.value ?: emptyList())
             .filter { contact ->
+                Log.e(TAG, "performSearch: ${contact}", )
                 contact.phoneNumbers.any {
-                    it.value == query || it.normalizedNumber == query || (it.value.substringAfter(
-                        "0"
-                    ) == query.substringAfter("+"))
+                    it.value.replace(" ","") == query || it.normalizedNumber.replace(" ","") == query
                 }
             }
             .map(Contact::firstName)
-            .defaultIfEmpty("Add contact")
+            .defaultIfEmpty(if(query.isEmpty()) "" else "Add contact")
             .subscribeOn(Schedulers.io())
     }
 
@@ -80,9 +79,11 @@ class NumPadFragment :
     }
 
     override fun setView() {
+        context?.let { viewModel.getAllContact(it) }
         binding.viewModel = viewModel
         binding.textViewNumberPhone.isSelected = true
         initEpoxy()
+        logicSearch()
     }
 
     override fun setOnClick() {
@@ -139,6 +140,7 @@ class NumPadFragment :
             }
         }
     }
+
 
     override fun onDestroy() {
         disposable.clear()
